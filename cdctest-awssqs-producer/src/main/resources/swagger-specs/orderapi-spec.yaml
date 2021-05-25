@@ -1,0 +1,75 @@
+swagger: "2.0"
+info:
+  description: "注文を管理するAPI."
+  version: "0.1.0-SNAPSHOT"
+  title: "注文API."
+  contact:
+    url: "https://github.com/nautible"
+host: "localhost"
+basePath: "/orderservice"
+tags:
+- name: "order"
+  description: "注文."
+  externalDocs:
+    url: "https://github.com/nautible"
+schemes:
+- "http"
+paths:
+  /order:
+    post:
+      tags:
+      - "order"
+      summary: "注文します."
+      description: "新規に注文します."
+      operationId: "post-order"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "order"
+        description: "注文."
+        schema:
+          $ref: '#/definitions/Order'
+      responses:
+        200:
+          description: "OK. 注文を受け付けた."
+          schema:
+            $ref: "#/definitions/OrderResult"
+        400:
+          description: "Bad Request. 形式に誤りのあるHTTP要求. いずれかのパラメータに形式不備が存在します."
+          schema:
+            $ref: "#/definitions/Unexpected"
+definitions:
+  Order:
+    description: "注文."
+    type: "object"
+    properties:
+      product:
+        description: "商品名."
+        type: "string"
+      orderer:
+        description: "注文者名."
+        type: "string"
+      charge:
+        description: "価格."
+        type: "integer"
+      comment:
+        description: "備考."
+        type: "string"
+  OrderResult:
+    description: "注文結果."
+    type: "object"
+    properties:
+      id:
+        description: "注文ID."
+        type: "string"
+  Unexpected:
+    description: "異常を表現するオブジェクト."
+    type: "object"
+    properties:
+      errorCode:
+        description: "業務上のエラーを特定するコード."
+        type: "string"
+      message:
+        description: "エラーコードに対応するメッセージ."
+        type: "string"

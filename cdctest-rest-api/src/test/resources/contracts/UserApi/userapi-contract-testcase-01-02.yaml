@@ -1,0 +1,22 @@
+description: This contract verifies User API! Please built in your CI system consumer and producer each other!
+name: User API Contract Test Case 01-02
+ignored: false
+request:
+  url: /userservice/user
+  queryParameters:
+    id: imawanokiyoshiro
+  method: GET
+  headers:
+    Accept: application/json
+response:
+  status: 404
+  headers:
+    Content-Type: application/json
+  body:
+    errorCode: E00001
+    message: user not found
+  matchers:
+    body:
+      - path: $.message
+        type: by_regex
+        predefined: non_blank

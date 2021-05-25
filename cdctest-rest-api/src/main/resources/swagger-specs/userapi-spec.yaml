@@ -1,0 +1,69 @@
+swagger: "2.0"
+info:
+  description: "ユーザを管理するAPI."
+  version: "0.1.0-SNAPSHOT"
+  title: "ユーザAPI."
+  contact:
+    url: "https://github.com/nautible"
+host: "localhost"
+basePath: "/userservice"
+tags:
+- name: "user"
+  description: "ユーザ."
+  externalDocs:
+    url: "https://github.com/nautible"
+schemes:
+- "http"
+paths:
+  /user:
+    get:
+      tags:
+      - "user"
+      summary: "指定したユーザを取得します."
+      description: "指定したユーザを取得します."
+      operationId: "get-user"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        type: "string"
+        name: "id"
+        description: "ユーザID"
+        required: true
+      responses:
+        200:
+          description: "OK. 指定されたIDのユーザ."
+          schema:
+            $ref: "#/definitions/User"
+        400:
+          description: "Bad Request. 形式に誤りのあるHTTP要求. いずれかのパラメータに形式不備が存在します."
+          schema:
+            $ref: "#/definitions/Unexpected"
+        404:
+          description: "Not Found. 指定されたIDに合致するユーザが存在しません."
+          schema:
+            $ref: "#/definitions/Unexpected"
+definitions:
+  User:
+    description: "ユーザ."
+    type: "object"
+    properties:
+      id:
+        description: "ユーザを特定するキー."
+        type: "string"
+      name:
+        description: "氏名."
+        type: "string"
+      organization:
+        description: "組織."
+        type: "string"
+  Unexpected:
+    description: "異常を表現するオブジェクト."
+    type: "object"
+    properties:
+      errorCode:
+        description: "業務上のエラーを特定するコード."
+        type: "string"
+      message:
+        description: "エラーコードに対応するメッセージ."
+        type: "string"

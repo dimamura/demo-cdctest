@@ -1,0 +1,27 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description:
+  SQS for CDC Test AWS SQS Queue Application
+
+Metadata:
+  "AWS::CloudFormation::Interface":
+    ParameterGroups:
+      - Label:
+          default: "Queue Name for CDC Test AWS SQS Queue Application"
+        Parameters:
+          - QueueName
+    ParameterLabels:
+      QueueName:
+        default: "cdctest-awssqs-queue"
+
+Parameters:
+  QueueName:
+    Type: String
+    Default: "cdctest-awssqs-queue"
+
+Resources:
+  Queue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: !Sub ${QueueName}
+      MessageRetentionPeriod: 1800
+      VisibilityTimeout: 65

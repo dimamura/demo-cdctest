@@ -1,0 +1,20 @@
+description: This contract verifies User API! Please built in your CI system consumer and producer each other!
+name: User API Contract Test Case 01-03
+ignored: false
+request:
+  url: /userservice/user
+  method: GET
+  headers:
+    Accept: application/json
+response:
+  status: 400
+  headers:
+    Content-Type: application/json
+  body:
+    errorCode: E00000
+    message: id is required
+  matchers:
+    body:
+      - path: $.message
+        type: by_regex
+        value: ^(?!\\s*$).+

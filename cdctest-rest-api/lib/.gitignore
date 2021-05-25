@@ -1,0 +1,2 @@
+### non gradle/maven managed libs, manually downlod libs. ###
+spring-cloud-contract-stub-runner-boot-*.jar

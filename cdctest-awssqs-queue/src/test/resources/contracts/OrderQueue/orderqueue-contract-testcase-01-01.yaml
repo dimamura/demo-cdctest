@@ -1,0 +1,19 @@
+description: This contract verifies Order Queue! Please built in your CI system consumer and producer each other!
+name: Order Queue Contract Test Case 01-01
+ignored: false
+label: test_case_01_01
+input:
+  triggeredBy: executeOrder("test_case_01_01")
+outputMessage:
+  sentTo: cdctest-awssqs-queue
+  body:
+    id: 550e8400-e29b-41d4-a716-446655440000
+    product: プロダクト①
+    orderer: 町田町蔵
+    charge: 1000
+    comment: 備考
+  matchers:
+    body:
+      - path: $.id
+        type: by_regex
+        value: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"

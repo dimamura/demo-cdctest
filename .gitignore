@@ -1,0 +1,43 @@
+### gradle ###
+.gradle
+!gradle/wrapper/gradle-wrapper.jar
+*build/
+
+### auto generated sources ###
+*gen-java/
+*gen-resources/
+
+### Eclipse ###
+.project
+.classpath
+.settings
+*bin/
+
+### STS ###
+.apt_generated
+.factorypath
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+/out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode
+
+### Open Clover ###
+.clover
+
+### Checkstyle ###
+.checkstyle

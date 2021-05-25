@@ -1,0 +1,44 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description:
+  S3 Bucket for CDC Test AWS SQS Consumer Application
+
+Metadata:
+  "AWS::CloudFormation::Interface":
+    ParameterGroups:
+      - Label:
+          default: "Bucket Name for CDC Test AWS SQS Consumer Application"
+        Parameters:
+          - BucketName
+    ParameterLabels:
+      BucketName:
+        default: "cdctest-awssqs-s3"
+
+Parameters:
+  BucketName:
+    Type: String
+    Default: "cdctest-awssqs-s3"
+
+Resources:
+  CdcTestAwsSqsConsumerApplicationOrderListBucket:
+    Type: "AWS::S3::Bucket"
+    Properties:
+      BucketName: !Sub ${BucketName}
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      LifecycleConfiguration:
+        Rules:
+          - ExpirationInDays: 3
+            NoncurrentVersionExpirationInDays: 3
+            Status: Enabled
+            AbortIncompleteMultipartUpload:
+              DaysAfterInitiation: 3
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      AccessControl: BucketOwnerFullControl
+      VersioningConfiguration:
+        Status: Enabled
