@@ -16,4 +16,4 @@
     - cdctest-awssqs-queue
     - cdctest-awssqs-producer
     - cdctest-awssqs-consumer
-- オブジェクトの広場連載記事の第3回で実装内容を解説する予定です
+- オブジェクトの広場連載記事の[第3回](https://www.ogis-ri.co.jp/otc/hiroba/technical/microservices-test/part3.html)で実装内容を解説しています
