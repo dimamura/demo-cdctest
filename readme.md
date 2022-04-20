@@ -1,5 +1,5 @@
-# demo-cdctestについて
-- Spring Cloud Contractを用いたCDCテストのトレーニングアプリケーションです
+# nautible-test-consumer-driven-contracts について
+- Spring Cloud Contractを用いたCDCテスト（Consumer Driven Contract Testing）のトレーニングアプリケーションです
 - オブジェクトの広場連載記事 [マイクロサービスアーキテクチャに効く!テスト技法](https://www.ogis-ri.co.jp/otc/hiroba/technical/microservices-test/) の[第1回～第3回 サービス間インターフェースのテスト技法 CDCテスト](https://www.ogis-ri.co.jp/otc/hiroba/technical/microservices-test/part1.html) に対応しています。記事本文と合わせてご利用ください 
 
 # 基本形：REST APIのCDCテスト （HTTPのケース）
